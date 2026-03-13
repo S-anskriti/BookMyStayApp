@@ -1,73 +1,48 @@
 /**
  * Book My Stay App
  * Hotel Booking Management System
- * @author Sansy
- * @version 2.1
+ * @author Sanskriti
+ * @version 3.1
  */
 
-abstract class Room {
-    String type;
-    int beds;
-    int size;
-    double price;
+import java.util.HashMap;
 
-    Room(String type, int beds, int size, double price) {
-        this.type = type;
-        this.beds = beds;
-        this.size = size;
-        this.price = price;
+class RoomInventory {
+
+    HashMap<String, Integer> inventory;
+
+    RoomInventory() {
+        inventory = new HashMap<>();
+        inventory.put("Single Room", 10);
+        inventory.put("Double Room", 5);
+        inventory.put("Suite Room", 2);
     }
 
-    void displayRoom() {
-        System.out.println("Room Type: " + type);
-        System.out.println("Beds: " + beds);
-        System.out.println("Size: " + size + " sq ft");
-        System.out.println("Price: " + price);
+    int getAvailability(String roomType) {
+        return inventory.get(roomType);
     }
-}
 
-class SingleRoom extends Room {
-    SingleRoom() {
-        super("Single Room", 1, 200, 1500);
+    void updateAvailability(String roomType, int count) {
+        inventory.put(roomType, count);
     }
-}
 
-class DoubleRoom extends Room {
-    DoubleRoom() {
-        super("Double Room", 2, 350, 2500);
+    void displayInventory() {
+        for (String roomType : inventory.keySet()) {
+            System.out.println(roomType + " Available: " + inventory.get(roomType));
+        }
     }
 }
 
-class SuiteRoom extends Room {
-    SuiteRoom() {
-        super("Suite Room", 3, 500, 5000);
-    }
-}
-
-public class UseCase2RoomInitialization {
+public class UseCase3InventorySetup {
     public static void main(String[] args) {
+
         System.out.println("Book My Stay");
         System.out.println("Hotel Booking Management System");
-        System.out.println("Version 2.1");
+        System.out.println("Version 3.1");
 
-        SingleRoom single = new SingleRoom();
-        DoubleRoom doubleRoom = new DoubleRoom();
-        SuiteRoom suite = new SuiteRoom();
-
-        int singleAvailability = 10;
-        int doubleAvailability = 5;
-        int suiteAvailability = 2;
+        RoomInventory inventory = new RoomInventory();
 
         System.out.println();
-        single.displayRoom();
-        System.out.println("Available: " + singleAvailability);
-
-        System.out.println();
-        doubleRoom.displayRoom();
-        System.out.println("Available: " + doubleAvailability);
-
-        System.out.println();
-        suite.displayRoom();
-        System.out.println("Available: " + suiteAvailability);
+        inventory.displayInventory();
     }
 }
