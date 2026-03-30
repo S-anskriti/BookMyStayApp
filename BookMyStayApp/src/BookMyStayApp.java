@@ -1,4 +1,4 @@
-```java id="d7k2qs"
+
 /**
  * Book My Stay App
  * Hotel Booking Management System
@@ -43,7 +43,7 @@ class RoomInventory {
 
     RoomInventory() {
         inventory = new HashMap<>();
-        inventory.put("Single Room", 2);
+        inventory.put("Single Room", Integer.valueOf(2));
         inventory.put("Double Room", 2);
         inventory.put("Suite Room", 1);
     }
@@ -53,7 +53,7 @@ class RoomInventory {
     }
 
     void decreaseAvailability(String type) {
-        inventory.put(type, inventory.get(type) - 1);
+        inventory.put(type, Integer.valueOf(inventory.get(type) - 1));
     }
 }
 
@@ -95,7 +95,7 @@ class BookingService {
     }
 }
 
-public class UseCase6RoomAllocationService {
+ class UseCase6RoomAllocationService {
     public static void main(String[] args) {
 
         System.out.println("Book My Stay");
